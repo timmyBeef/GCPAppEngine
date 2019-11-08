@@ -1,0 +1,71 @@
+#spring:
+#  datasource:
+#    type: com.zaxxer.hikari.HikariDataSource
+#    hikari:
+#      primary:
+#        jdbc-url: jdbc:sqlserver://127.0.0.1:9998;DatabaseName=TPAPPEDU
+#        driver-class-name: com.microsoft.sqlserver.jdbc.SQLServerDriver
+#        username: tim
+#        password: 2wsx#EDC
+#      secondary:
+#        jdbc-url: jdbc:mysql://localhost:3306/secdb?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC
+#        driver-class-name: com.mysql.cj.jdbc.Driver
+#        username: root
+#        password: date0805
+#taipower:
+#  db-para: ?useUnicode=true&characterEncoding=utf8&useSSL=false&useLegacyDatetimeCode=false&serverTimezone=UTC
+#
+#
+#spring:
+#  datasource:
+#    type: com.zaxxer.hikari.HikariDataSource
+#    driverClassName: com.mysql.cj.jdbc.Driver
+#    hikari:
+#      ds01:
+#        jdbc-url: jdbc:mysql://localhost:3306/test1${taipower.db-para}
+#        username: root
+#        password: date0805
+#      ds02:
+#        jdbc-url: jdbc:mysql://localhost:3306/test2${taipower.db-para}
+#        username: root
+#        password: date0805
+
+taipower:
+  cps-db1: NCPSEDU
+  cps-db2: NCPSEDUKM
+  intranet-host: http://10.35.101.10:7031 #CIGP_HOST dev
+  ws:
+    url:
+      hostUrl: ${taipower.intranet-host}
+      qryCustBillInfo: /QryCustBillInfo/services/QryCustBillInfo.QryCustBillInfoHttpSoap11Endpoint/
+      test: http://localhost:8081/ws/countries
+  rest:
+    url:
+      hostUrl: ${taipower.intranet-host}
+      qryGPAmt: /QryGPAmt/services/QryGPAmt/chkGPStatus
+      test: http://localhost:8080/api/query
+      test2: http://localhost:8080/QryGPAmt/services/QryGPAmt/chkGPStatus
+
+spring:
+  datasource:
+    type: com.zaxxer.hikari.HikariDataSource
+    driverClassName: oracle.jdbc.OracleDriver
+    hikari:
+      ds01:
+        jdbc-url: jdbc:oracle:thin:@10.201.220.118:1521:${taipower.cps-db1}
+        username: ncpsuser
+        password: systex
+      ds02:
+        jdbc-url: jdbc:oracle:thin:@10.202.201.66:1521:${taipower.cps-db1}
+        username: ncpsuser
+        password: systex
+#      ds03:
+#        jdbc-url: jdbc:oracle:thin:@10.221.2.114:1521:${taipower.cps-db1}
+#        username: ncpsuser
+#        password: systex
+#      ds04:
+#        jdbc-url: jdbc:oracle:thin:@10.205.3.11:1521:${taipower.cps-db1}
+#        username: ncpsuser
+#        password: systex
+
+

@@ -1,0 +1,361 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+        <wsdl:definitions xmlns:wsdl="http://schemas.xmlsoap.org/wsdl/" xmlns:ns="http://main" xmlns:wsaw="http://www.w3.org/2006/05/addressing/wsdl" xmlns:ax25="http://databean/xsd" xmlns:http="http://schemas.xmlsoap.org/wsdl/http/" xmlns:ax23="http://sql.java/xsd" xmlns:ax21="http://io.java/xsd" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:mime="http://schemas.xmlsoap.org/wsdl/mime/" xmlns:soap="http://schemas.xmlsoap.org/wsdl/soap/" xmlns:soap12="http://schemas.xmlsoap.org/wsdl/soap12/" targetNamespace="http://main">
+    <wsdl:documentation>Please Type your service description here</wsdl:documentation>
+    <wsdl:types>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://sql.java/xsd">
+    <xs:complexType name="SQLException">
+    <xs:sequence>
+    <xs:element minOccurs="0" name="SQLState" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="errorCode" type="xs:int" />
+    <xs:element minOccurs="0" name="nextException" nillable="true" type="ax23:SQLException" />
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://databean/xsd">
+    <xs:complexType name="result">
+    <xs:sequence>
+    <xs:element minOccurs="0" name="ADDR" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="ADDR_ZIP" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="AMP" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="BANK_ACC" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="BANK_CODE" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="BILLS_INFO" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="BILL_CYC" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="CHBK_DT" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="CITY_CD" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="CONT_CAT" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="CONT_EFF_DT" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="CONT_KWH" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="CUST_CAT" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="CUST_NO" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="DISCOUNT" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="ELEC_USE" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="ERR_MSG" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="FEED_CD" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="GUI_NUM" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="IND_CD" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="LAST_IDX" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="MAIL_ADDR" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="MAIL_ADDR_ZIP" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="MTR_CHK_DT" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="MTR_LOCK" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="MTR_MULT" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="MTR_NUM" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="MTR_PHASE" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="MTR_TYPE" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="NAME" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="NEXT_MTRRD_DT" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="PHONE" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="RESULT_CODE" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="RLS_CAT" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="SET_DT" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="SPEC_CAT" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="TEL" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="THIS_IDX" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="TOLL_HH" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="TOT_EQU_CAP" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="TRANS_INFO" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+    <xs:complexType name="result_app">
+    <xs:sequence>
+    <xs:element minOccurs="0" name="BASE_KWH" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="BILL_CYC" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="BNK_ACCT_NO" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="BUSI_NO" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="BUSI_USE" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="CTR_CLASS" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="CUST_NAME" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="DELAY_AMT" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="ERR_MSG" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="ISSUE_YYYMM" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="LASTY_BIL_DAY" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="LASTY_BIL_KWH" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="LAST_SHARE_AMT" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="MAIL_ADDR" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="MTR_MNO" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="MTR_MNO4" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="MTR_MULT" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="MTR_NEXT_RD_DATE" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="MTR_PHASE" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="MTR_RD_DATE" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="MTR_SEQ" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="MUL_UNPAY" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="PAY_STATUS" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="RD_REG" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="RESULT_CODE" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="SPEC_BID" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="SPEC_CD" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="TOTAL_AMT" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="USE_ADDR" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+    <xs:complexType name="result_QR">
+    <xs:sequence>
+    <xs:element minOccurs="0" name="BILL_AMT" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="BILL_CYC" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="BUSI_USE" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="CTR_CLASS" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="HIS_KWH" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="LASTY_BIL_KWH" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="MTR_MULT" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="RD_DATE" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="RD_REG" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="SAVE_AMT" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="SAVE_ELEC" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="SIC_CD" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="VERIFY" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:schema>
+    <xs:schema xmlns:ax26="http://databean/xsd" xmlns:ax24="http://sql.java/xsd" xmlns:ax22="http://io.java/xsd" attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://main">
+    <xs:import namespace="http://io.java/xsd" />
+    <xs:import namespace="http://sql.java/xsd" />
+    <xs:import namespace="http://databean/xsd" />
+    <xs:element name="QryCustBillInfoIOException">
+    <xs:complexType>
+    <xs:sequence>
+    <xs:element minOccurs="0" name="IOException" nillable="true" type="ax21:IOException" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+    <xs:element name="QryCustBillInfoSQLException">
+    <xs:complexType>
+    <xs:sequence>
+    <xs:element minOccurs="0" name="SQLException" nillable="true" type="ax23:SQLException" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+    <xs:element name="getBillInfo">
+    <xs:complexType>
+    <xs:sequence>
+    <xs:element minOccurs="0" name="cust_no" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+    <xs:element name="getBillInfoResponse">
+    <xs:complexType>
+    <xs:sequence>
+    <xs:element minOccurs="0" name="return" nillable="true" type="ax25:result" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+    <xs:element name="getBillInfoByAPP">
+    <xs:complexType>
+    <xs:sequence>
+    <xs:element minOccurs="0" name="cust_no" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+    <xs:element name="getBillInfoByAPPResponse">
+    <xs:complexType>
+    <xs:sequence>
+    <xs:element minOccurs="0" name="return" nillable="true" type="ax25:result_app" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+    <xs:element name="chkQRCode">
+    <xs:complexType>
+    <xs:sequence>
+    <xs:element minOccurs="0" name="cust_no" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="bill_no" nillable="true" type="xs:string" />
+    <xs:element minOccurs="0" name="bill_ym" nillable="true" type="xs:string" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+    <xs:element name="chkQRCodeResponse">
+    <xs:complexType>
+    <xs:sequence>
+    <xs:element minOccurs="0" name="return" nillable="true" type="ax25:result_QR" />
+</xs:sequence>
+</xs:complexType>
+</xs:element>
+</xs:schema>
+    <xs:schema attributeFormDefault="qualified" elementFormDefault="qualified" targetNamespace="http://io.java/xsd">
+    <xs:complexType name="IOException">
+    <xs:sequence />
+</xs:complexType>
+</xs:schema>
+</wsdl:types>
+    <wsdl:message name="getBillInfoByAPPRequest">
+    <wsdl:part name="parameters" element="ns:getBillInfoByAPP" />
+</wsdl:message>
+    <wsdl:message name="getBillInfoByAPPResponse">
+    <wsdl:part name="parameters" element="ns:getBillInfoByAPPResponse" />
+</wsdl:message>
+    <wsdl:message name="QryCustBillInfoIOException">
+    <wsdl:part name="parameters" element="ns:QryCustBillInfoIOException" />
+</wsdl:message>
+    <wsdl:message name="QryCustBillInfoSQLException">
+    <wsdl:part name="parameters" element="ns:QryCustBillInfoSQLException" />
+</wsdl:message>
+    <wsdl:message name="getBillInfoRequest">
+    <wsdl:part name="parameters" element="ns:getBillInfo" />
+</wsdl:message>
+    <wsdl:message name="getBillInfoResponse">
+    <wsdl:part name="parameters" element="ns:getBillInfoResponse" />
+</wsdl:message>
+    <wsdl:message name="chkQRCodeRequest">
+    <wsdl:part name="parameters" element="ns:chkQRCode" />
+</wsdl:message>
+    <wsdl:message name="chkQRCodeResponse">
+    <wsdl:part name="parameters" element="ns:chkQRCodeResponse" />
+</wsdl:message>
+    <wsdl:portType name="QryCustBillInfoPortType">
+    <wsdl:operation name="getBillInfoByAPP">
+    <wsdl:input message="ns:getBillInfoByAPPRequest" wsaw:Action="urn:getBillInfoByAPP" />
+    <wsdl:output message="ns:getBillInfoByAPPResponse" wsaw:Action="urn:getBillInfoByAPPResponse" />
+    <wsdl:fault message="ns:QryCustBillInfoIOException" name="QryCustBillInfoIOException" wsaw:Action="urn:getBillInfoByAPPQryCustBillInfoIOException" />
+    <wsdl:fault message="ns:QryCustBillInfoSQLException" name="QryCustBillInfoSQLException" wsaw:Action="urn:getBillInfoByAPPQryCustBillInfoSQLException" />
+</wsdl:operation>
+    <wsdl:operation name="getBillInfo">
+    <wsdl:input message="ns:getBillInfoRequest" wsaw:Action="urn:getBillInfo" />
+    <wsdl:output message="ns:getBillInfoResponse" wsaw:Action="urn:getBillInfoResponse" />
+    <wsdl:fault message="ns:QryCustBillInfoIOException" name="QryCustBillInfoIOException" wsaw:Action="urn:getBillInfoQryCustBillInfoIOException" />
+    <wsdl:fault message="ns:QryCustBillInfoSQLException" name="QryCustBillInfoSQLException" wsaw:Action="urn:getBillInfoQryCustBillInfoSQLException" />
+</wsdl:operation>
+    <wsdl:operation name="chkQRCode">
+    <wsdl:input message="ns:chkQRCodeRequest" wsaw:Action="urn:chkQRCode" />
+    <wsdl:output message="ns:chkQRCodeResponse" wsaw:Action="urn:chkQRCodeResponse" />
+    <wsdl:fault message="ns:QryCustBillInfoIOException" name="QryCustBillInfoIOException" wsaw:Action="urn:chkQRCodeQryCustBillInfoIOException" />
+    <wsdl:fault message="ns:QryCustBillInfoSQLException" name="QryCustBillInfoSQLException" wsaw:Action="urn:chkQRCodeQryCustBillInfoSQLException" />
+</wsdl:operation>
+</wsdl:portType>
+    <wsdl:binding name="QryCustBillInfoSoap11Binding" type="ns:QryCustBillInfoPortType">
+    <soap:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <wsdl:operation name="getBillInfoByAPP">
+    <soap:operation soapAction="urn:getBillInfoByAPP" style="document" />
+    <wsdl:input>
+    <soap:body use="literal" />
+</wsdl:input>
+    <wsdl:output>
+    <soap:body use="literal" />
+</wsdl:output>
+    <wsdl:fault name="QryCustBillInfoIOException">
+    <soap:fault use="literal" name="QryCustBillInfoIOException" />
+</wsdl:fault>
+    <wsdl:fault name="QryCustBillInfoSQLException">
+    <soap:fault use="literal" name="QryCustBillInfoSQLException" />
+</wsdl:fault>
+</wsdl:operation>
+    <wsdl:operation name="getBillInfo">
+    <soap:operation soapAction="urn:getBillInfo" style="document" />
+    <wsdl:input>
+    <soap:body use="literal" />
+</wsdl:input>
+    <wsdl:output>
+    <soap:body use="literal" />
+</wsdl:output>
+    <wsdl:fault name="QryCustBillInfoIOException">
+    <soap:fault use="literal" name="QryCustBillInfoIOException" />
+</wsdl:fault>
+    <wsdl:fault name="QryCustBillInfoSQLException">
+    <soap:fault use="literal" name="QryCustBillInfoSQLException" />
+</wsdl:fault>
+</wsdl:operation>
+    <wsdl:operation name="chkQRCode">
+    <soap:operation soapAction="urn:chkQRCode" style="document" />
+    <wsdl:input>
+    <soap:body use="literal" />
+</wsdl:input>
+    <wsdl:output>
+    <soap:body use="literal" />
+</wsdl:output>
+    <wsdl:fault name="QryCustBillInfoIOException">
+    <soap:fault use="literal" name="QryCustBillInfoIOException" />
+</wsdl:fault>
+    <wsdl:fault name="QryCustBillInfoSQLException">
+    <soap:fault use="literal" name="QryCustBillInfoSQLException" />
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+    <wsdl:binding name="QryCustBillInfoSoap12Binding" type="ns:QryCustBillInfoPortType">
+    <soap12:binding transport="http://schemas.xmlsoap.org/soap/http" style="document" />
+    <wsdl:operation name="getBillInfoByAPP">
+    <soap12:operation soapAction="urn:getBillInfoByAPP" style="document" />
+    <wsdl:input>
+    <soap12:body use="literal" />
+</wsdl:input>
+    <wsdl:output>
+    <soap12:body use="literal" />
+</wsdl:output>
+    <wsdl:fault name="QryCustBillInfoIOException">
+    <soap12:fault use="literal" name="QryCustBillInfoIOException" />
+</wsdl:fault>
+    <wsdl:fault name="QryCustBillInfoSQLException">
+    <soap12:fault use="literal" name="QryCustBillInfoSQLException" />
+</wsdl:fault>
+</wsdl:operation>
+    <wsdl:operation name="getBillInfo">
+    <soap12:operation soapAction="urn:getBillInfo" style="document" />
+    <wsdl:input>
+    <soap12:body use="literal" />
+</wsdl:input>
+    <wsdl:output>
+    <soap12:body use="literal" />
+</wsdl:output>
+    <wsdl:fault name="QryCustBillInfoIOException">
+    <soap12:fault use="literal" name="QryCustBillInfoIOException" />
+</wsdl:fault>
+    <wsdl:fault name="QryCustBillInfoSQLException">
+    <soap12:fault use="literal" name="QryCustBillInfoSQLException" />
+</wsdl:fault>
+</wsdl:operation>
+    <wsdl:operation name="chkQRCode">
+    <soap12:operation soapAction="urn:chkQRCode" style="document" />
+    <wsdl:input>
+    <soap12:body use="literal" />
+</wsdl:input>
+    <wsdl:output>
+    <soap12:body use="literal" />
+</wsdl:output>
+    <wsdl:fault name="QryCustBillInfoIOException">
+    <soap12:fault use="literal" name="QryCustBillInfoIOException" />
+</wsdl:fault>
+    <wsdl:fault name="QryCustBillInfoSQLException">
+    <soap12:fault use="literal" name="QryCustBillInfoSQLException" />
+</wsdl:fault>
+</wsdl:operation>
+</wsdl:binding>
+    <wsdl:binding name="QryCustBillInfoHttpBinding" type="ns:QryCustBillInfoPortType">
+    <http:binding verb="POST" />
+    <wsdl:operation name="getBillInfoByAPP">
+    <http:operation location="getBillInfoByAPP" />
+    <wsdl:input>
+    <mime:content type="application/xml" part="parameters" />
+</wsdl:input>
+    <wsdl:output>
+    <mime:content type="application/xml" part="parameters" />
+</wsdl:output>
+</wsdl:operation>
+    <wsdl:operation name="getBillInfo">
+    <http:operation location="getBillInfo" />
+    <wsdl:input>
+    <mime:content type="application/xml" part="parameters" />
+</wsdl:input>
+    <wsdl:output>
+    <mime:content type="application/xml" part="parameters" />
+</wsdl:output>
+</wsdl:operation>
+    <wsdl:operation name="chkQRCode">
+    <http:operation location="chkQRCode" />
+    <wsdl:input>
+    <mime:content type="application/xml" part="parameters" />
+</wsdl:input>
+    <wsdl:output>
+    <mime:content type="application/xml" part="parameters" />
+</wsdl:output>
+</wsdl:operation>
+</wsdl:binding>
+    <wsdl:service name="QryCustBillInfo">
+    <wsdl:port name="QryCustBillInfoHttpSoap11Endpoint" binding="ns:QryCustBillInfoSoap11Binding">
+    <soap:address location="http://10.35.101.10:7031/QryCustBillInfo/services/QryCustBillInfo.QryCustBillInfoHttpSoap11Endpoint/" />
+</wsdl:port>
+    <wsdl:port name="QryCustBillInfoHttpSoap12Endpoint" binding="ns:QryCustBillInfoSoap12Binding">
+    <soap12:address location="http://10.35.101.10:7031/QryCustBillInfo/services/QryCustBillInfo.QryCustBillInfoHttpSoap12Endpoint/" />
+</wsdl:port>
+    <wsdl:port name="QryCustBillInfoHttpEndpoint" binding="ns:QryCustBillInfoHttpBinding">
+    <http:address location="http://10.35.101.10:7031/QryCustBillInfo/services/QryCustBillInfo.QryCustBillInfoHttpEndpoint/" />
+</wsdl:port>
+</wsdl:service>
+</wsdl:definitions>
