@@ -1,0 +1,32 @@
+<service>
+    <id>@dist.project.id@</id>
+    <name>@dist.project.name@</name>
+    <description>@dist.project.description@</description>
+    <workingdirectory>%BASE%\</workingdirectory>
+
+    <logpath>%BASE%\logs</logpath>
+    <log mode="roll-by-time">
+        <pattern>yyyyMMdd</pattern>
+    </log>
+
+    <startmode>Automatic</startmode>
+    <delayedAutoStart/>
+
+    <executable>jdk\jre\bin\java.exe</executable>
+    <startargument>-Xmx2048m</startargument>
+    <startargument>-Dspring.application.admin.enabled=true</startargument>
+    <startargument>-Dcom.sun.management.jmxremote.port=@dist.jmx.port@</startargument>
+    <startargument>-Dcom.sun.management.jmxremote.authenticate=false</startargument>
+    <startargument>-Dcom.sun.management.jmxremote.ssl=false</startargument>
+    <startargument>-Dfile.encoding=UTF-8</startargument>
+    <startargument>-cp</startargument>
+    <startargument>lib/*;web</startargument>
+    <startargument>com.taipower.intranet.daemon.StartSpringBootService</startargument>
+    <startargument>@dist.start.class@</startargument>
+
+    <stopexecutable>jdk\jre\bin\java.exe</stopexecutable>
+    <stopargument>-cp</stopargument>
+    <stopargument>lib/*;web</stopargument>
+    <stopargument>com.taipower.intranet.daemon.StopSpringBootService</stopargument>
+    <stopargument>@dist.jmx.port@</stopargument>
+</service>

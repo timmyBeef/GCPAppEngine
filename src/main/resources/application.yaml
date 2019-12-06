@@ -59,13 +59,13 @@ spring:
         jdbc-url: jdbc:oracle:thin:@10.202.201.66:1521:${taipower.cps-db1}
         username: ncpsuser
         password: systex
-#      ds03:
-#        jdbc-url: jdbc:oracle:thin:@10.221.2.114:1521:${taipower.cps-db1}
-#        username: ncpsuser
-#        password: systex
-#      ds04:
-#        jdbc-url: jdbc:oracle:thin:@10.205.3.11:1521:${taipower.cps-db1}
-#        username: ncpsuser
-#        password: systex
+      ds03:
+        jdbc-url: jdbc:oracle:thin:@10.221.2.114:1521:${taipower.cps-db1}
+        username: ncpsuser
+        password: systex
+      ds04:
+        jdbc-url: jdbc:oracle:thin:@10.205.3.11:1521:${taipower.cps-db1}
+        username: ncpsuser
+        password: systex
 
 

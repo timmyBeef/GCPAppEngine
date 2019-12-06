@@ -46,6 +46,7 @@ public class CPSService {
         return list.get(0);
     }
 
+    // GET CPS
     public APMCUST getAPMCUSTList(String cusNo) {
 
 
@@ -55,6 +56,25 @@ public class CPSService {
         builder.append(" MAIL_ROAD mailRoad, MAIL_LINE mailLine, CUST_NO custNo, CUST_NAME custName, CUST_CITY custCity, CUST_TOWN custTown,");
         builder.append(" CUST_ROAD custRoad, CUST_LINE custLine, CUST_PTCOD custPtcod, USE_TP useTp,CONT_TP contTp, DISC_TP discTp, SPE_CUST_TP speCustTp, CYCLE_DAY cycleDay ");
         builder.append(" from APMCUST where CUST_NO = :cusNo ", cusNo);
+
+        Query query = builder.build();
+
+        List<APMCUST> list = sqlExecutor.queryForList(query, APMCUST.class);
+
+        return list.get(0);
+    }
+
+    // GET CPS case
+    public APMCUST getCPSCase(String cusNo) {
+
+
+        Query.Builder builder = Query.builder();
+
+        builder.append(" select APMQURY.REND_AMT,APMQURY.WAIT_AMT,APMQURY.REND_MRK,APMQURY.SG_WRNO,APMQURY.FM_NO, ");
+        builder.append("APMQURY.CUST_NAME,APMQURY.NET_APPLY,APMQURY.STEP_NO,APMQURY.STEP_STATUS,APMQURY.CUST_NO,APMQURY.FM_DT, ");
+        builder.append("APMQURY.APIT_NAME from APMQURY where RTRIM(APMQURY.FMBH_NO) IS NULL and ");
+        builder.append("(APMQURY.FM_NO=? or FM_NO = (select FM_NO from APMFORM where NET_NO=? )) ");
+
 
         Query query = builder.build();
 

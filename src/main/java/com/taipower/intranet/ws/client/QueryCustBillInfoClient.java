@@ -57,4 +57,6 @@ public class QueryCustBillInfoClient {
         return (Result) wsTemplate.marshalSendAndReceive(url, request);
     }
 
+
+
 }

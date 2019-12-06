@@ -32,6 +32,8 @@
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-web-services</artifactId>
 		</dependency>
+
+		<!-- 包成 windows service 時, windows.xml裡有排除, 不然啟動會失敗-->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-devtools</artifactId>
@@ -87,6 +89,13 @@
 			<groupId>org.apache.httpcomponents</groupId>
 			<artifactId>httpclient</artifactId>
 			<version>4.5.9</version>
+		</dependency>
+
+		<!-- 包成 windows service 用-->
+		<dependency>
+			<groupId>commons-daemon</groupId>
+			<artifactId>commons-daemon</artifactId>
+			<version>1.1.0</version>
 		</dependency>
 	</dependencies>
 
@@ -185,5 +194,139 @@
 			</plugin>
 		</plugins>
 	</build>
+
+	<profiles>
+		<profile>
+			<id>packaging</id>
+
+			<properties>
+				<dist.dir>${project.build.directory}/dist</dist.dir>
+				<dist.project.id>${project.artifactId}</dist.project.id>
+				<dist.project.name>Taipower Intranet Agent</dist.project.name>
+				<dist.project.description>Taipower Intranet Agent Windows Service</dist.project.description>
+				<dist.start.class>com.taipower.intranet.TaipowerIntranetApplication</dist.start.class>
+				<dist.jmx.port>50201</dist.jmx.port>
+				<dist.jdk.dir>${dist.dir}/jdk8u172-b11</dist.jdk.dir>
+				<dist.finalName>${dist.project.id}</dist.finalName>
+			</properties>
+
+			<dependencies>
+
+				<dependency>
+					<groupId>com.sun.winsw</groupId>
+					<artifactId>winsw</artifactId>
+					<version>2.1.2</version>
+					<classifier>bin</classifier>
+					<type>exe</type>
+					<scope>provided</scope>
+				</dependency>
+			</dependencies>
+
+			<build>
+				<finalName>${dist.finalName}</finalName>
+
+				<plugins>
+					<plugin>
+						<groupId>org.springframework.boot</groupId>
+						<artifactId>spring-boot-maven-plugin</artifactId>
+						<configuration>
+							<attach>false</attach>
+							<classifier>bootable</classifier>
+						</configuration>
+					</plugin>
+
+					<plugin>
+						<groupId>com.googlecode.maven-download-plugin</groupId>
+						<artifactId>download-maven-plugin</artifactId>
+						<version>1.4.1</version>
+						<executions>
+							<execution>
+								<id>install-jdk</id>
+								<phase>prepare-package</phase>
+								<goals>
+									<goal>wget</goal>
+								</goals>
+								<configuration>
+									<url>https://github.com/AdoptOpenJDK/openjdk8-releases/releases/download/jdk8u172-b11/OpenJDK8_x64_Win_jdk8u172-b11.zip</url>
+									<unpack>true</unpack>
+									<outputDirectory>${project.build.directory}/dist</outputDirectory>
+									<overwrite>false</overwrite>
+									<sha1>71d5bff33ac52156510c4b128d5d8a9c24cf3981</sha1>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-dependency-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>copy</id>
+								<phase>package</phase>
+								<goals>
+									<goal>copy</goal>
+								</goals>
+								<configuration>
+									<artifactItems>
+										<artifactItem>
+											<groupId>com.sun.winsw</groupId>
+											<artifactId>winsw</artifactId>
+											<classifier>bin</classifier>
+											<type>exe</type>
+											<destFileName>service.exe</destFileName>
+										</artifactItem>
+									</artifactItems>
+									<outputDirectory>${dist.dir}</outputDirectory>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-resources-plugin</artifactId>
+						<executions>
+							<execution>
+								<id>copy-resources</id>
+								<phase>process-resources</phase>
+								<goals>
+									<goal>copy-resources</goal>
+								</goals>
+								<configuration>
+									<outputDirectory>${dist.dir}</outputDirectory>
+									<resources>
+										<resource>
+											<directory>src/main/dist</directory>
+											<filtering>true</filtering>
+										</resource>
+									</resources>
+								</configuration>
+							</execution>
+						</executions>
+					</plugin>
+
+					<plugin>
+						<groupId>org.apache.maven.plugins</groupId>
+						<artifactId>maven-assembly-plugin</artifactId>
+						<configuration>
+							<descriptors>
+								<descriptor>src/main/assembly/windows.xml</descriptor>
+							</descriptors>
+
+						</configuration>
+						<executions>
+							<execution>
+								<id>assembly</id>
+								<phase>package</phase>
+								<goals>
+									<goal>single</goal>
+								</goals>
+							</execution>
+						</executions>
+					</plugin>
+				</plugins>
+			</build>
+		</profile>
+	</profiles>
 
 </project>
